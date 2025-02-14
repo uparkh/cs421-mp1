@@ -86,22 +86,31 @@ myzip (x:xs) (y:ys) = (x,y) : myzip xs ys
 --- ### addpairs
 
 -- don't forget to put the type declaration or you will lose points!
-addpairs = undefined
+addpairs :: (Num a) => [a] -> [a] -> [a]
+addpairs xx yy =
+    let xxyy = myzip xx yy
+    in aux xxyy
+    where
+        aux [] = []
+        aux ((x,y):xys) = (x+y) : aux xys
 
 --- ### ones
 
 -- don't forget to put the type declaration or you will lose points!
-ones = undefined
+ones :: [Integer]
+ones = 1 : ones
 
 --- ### nats
 
 -- don't forget to put the type declaration or you will lose points!
-nats = undefined
+nats :: [Integer]
+nats = [0..]
 
 --- ### fib
 
 -- don't forget to put the type declaration or you will lose points!
-fib = undefined
+fib :: [Integer]
+fib = 0 : 1 : addpairs fib (tail fib)
 
 --- Set Theory
 --- ----------
