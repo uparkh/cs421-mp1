@@ -36,7 +36,11 @@ mytake n (x:xs)
 --- ### mydrop
 
 -- don't forget to put the type declaration or you will lose points!
-mydrop = undefined
+mydrop :: Int -> [a] -> [a]
+mydrop _ [] = []
+mydrop n (x:xs)
+    | n > 0 = mydrop (n-1) xs
+    | otherwise = x:xs
 
 --- ### rev
 
