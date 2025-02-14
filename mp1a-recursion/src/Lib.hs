@@ -54,7 +54,9 @@ rev xx = aux xx []
 --- ### app
 
 -- don't forget to put the type declaration or you will lose points!
-app = undefined
+app :: [a] -> [a] -> [a]
+app [] yy = yy
+app (x:xs) yy = x : app xs yy
 
 --- ### inclist
 
