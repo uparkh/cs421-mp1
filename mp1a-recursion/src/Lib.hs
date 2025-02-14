@@ -27,7 +27,11 @@ import qualified Prelude as P
 --- ### mytake
 
 -- don't forget to put the type declaration or you will lose points!
-mytake = undefined
+mytake :: Int -> [a] -> [a]
+mytake _ [] = []
+mytake n (x:xs)
+    | n > 0 = x : mytake (n-1) xs
+    | otherwise = []
 
 --- ### mydrop
 
