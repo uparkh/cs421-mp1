@@ -25,12 +25,16 @@ data Exp = IntExp Integer
 --- ### list2cons
 
 -- don't forget to put the type declaration or you will lose points!
-list2cons = undefined
+list2cons :: [a] -> List a
+list2cons [] = Nil
+list2cons (x:xs) = Cons x (list2cons xs)
 
 --- ### cons2list
 
 -- don't forget to put the type declaration or you will lose points!
-cons2list = undefined
+cons2list :: List a -> [a]
+cons2list Nil = []
+cons2list (Cons x l) = x : cons2list l
 
 --- ### eval
 
