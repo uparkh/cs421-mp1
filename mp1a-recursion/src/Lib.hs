@@ -118,22 +118,43 @@ fib = 0 : 1 : addpairs fib (tail fib)
 --- ### add
 
 -- don't forget to put the type declaration or you will lose points!
-add = undefined
+add :: Ord a => a -> [a] -> [a]
+add n [] = [n]
+add n (x:xs)
+    | n < x     = n : x : xs
+    | n == x    = x : xs
+    | otherwise = x : add n xs
 
 --- ### union
 
 -- don't forget to put the type declaration or you will lose points!
-union = undefined
+union :: Ord a => [a] -> [a] -> [a]
+union xx [] = xx
+union [] yy = yy
+union (x:xs) (y:ys)
+    | x < y     = x : union xs (y:ys)
+    | x == y    = x : union xs ys
+    | otherwise = y : union (x:xs) ys
 
 --- ### intersect
 
 -- don't forget to put the type declaration or you will lose points!
-intersect = undefined
+intersect :: Ord a => [a] -> [a] -> [a]
+intersect xx [] = []
+intersect [] yy = []
+intersect (x:xs) (y:ys)
+    | x < y     = intersect xs (y:ys)
+    | x == y    = x : intersect xs ys
+    | otherwise = intersect (x:xs) ys
 
 --- ### powerset
 
 -- don't forget to put the type declaration or you will lose points!
-powerset = undefined
+powerset :: Ord a => [a] -> [[a]]
+powerset xx = aux xx []
+    where
+        aux [] acc = [acc]
+        aux (x:xs) acc = aux xs acc `union` aux xs (x `add` acc) -- skip or add
 
 --- Higher Order Functions
 --- ----------------------
