@@ -17,6 +17,7 @@ import Prelude hiding ( take, drop, reverse
 -- When you are allowed to use builtin functions Prepend them with "P."
 -- for example `P.take`
 import qualified Prelude as P
+import Data.List (map)
 
 --- Problems
 --- ========
@@ -162,9 +163,11 @@ powerset xx = aux xx []
 --- ### inclist'
 
 -- don't forget to put the type declaration or you will lose points!
-inclist' = undefined
+inclist' :: Num a => [a] -> [a]
+inclist' = map (+1)
 
 --- ### sumlist'
 
 -- don't forget to put the type declaration or you will lose points!
-sumlist' = undefined
+sumlist' :: (Num a) => [a] -> a
+sumlist' = P.foldl (+) 0
